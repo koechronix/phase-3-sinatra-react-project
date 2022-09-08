@@ -6,33 +6,27 @@ class ApplicationController < Sinatra::Base
   # GET requests
   get '/tasks' do
     tasks = Task.all_importance
-    tasks.to_json
+    tasks.to_json(include: :level)
   end
 
   get '/tasks-low' do
     tasks = Task.filter_importance('low')
-    tasks.to_json
+    tasks.to_json(include: { level: {only: [:level]} })
   end
 
-  get '/tasks-medium' do
-    tasks = Task.filter_importance('medium')
-    tasks.to_json
-  end
+  # get '/tasks-medium' do
+  #   tasks = Task.filter_importance('medium')
+  #   tasks.to_json(include: { level: {only: [:level]} })
+  # end
 
   get '/tasks-high' do
     tasks = Task.filter_importance('high')
-    tasks.to_json
+    tasks.to_json(include: { level: {only: [:level]} })
     
   end
-
   get '/tasks/:id' do
-    task = Task.find(params[:id])
-    task.to_json
-  end
-
-  get '/tasks/:id' do
-    task = Task.find(params[:id])
-    task.to_json
+    tasks = Task.find(params[:id])
+    tasks.to_json(include: { level: {only: [:level]} })
   end
 
   # POST request(create)
@@ -43,9 +37,10 @@ class ApplicationController < Sinatra::Base
       importance:params[:importance],
       level_id:params[:level_id]
     )
-    task.to_json
+    task.to_json(include: {level: {only: [:level]} })
+    
   end
-  # PATCH request
+  # # PATCH request
 
   patch '/tasks/:id' do
     task = Task.find(params[:id])
@@ -54,10 +49,10 @@ class ApplicationController < Sinatra::Base
       importance:params[:importance],
       level_id:params[:level_id]
     )
-    task.to_json
+    task.to_json(include: {level: {only: [:level]} })
   end
   # DELETE request
-  delete '/todo/:id' do
+  delete '/tasks/:id' do
     task = Task.find(params[:id])
     task.destroy
     task.to_json

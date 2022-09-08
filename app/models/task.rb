@@ -10,6 +10,6 @@ class Task < ActiveRecord::Base
     end
 
     def self.filter_importance(importance)
-        self.all.filter{ |task | task[:importance] == importance }
+        self.all.filter{ |task | task[:importance] === importance }
     end
 end
