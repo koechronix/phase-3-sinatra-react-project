@@ -2,45 +2,42 @@ puts "🌱 Seeding tasks..."
 
 Level.destroy_all
 
-# Seed your database here
-Level.create(id: 1, level: "Cattle grazing")
-Level.create(id: 2, level: "Farm works")
-Level.create(id: 3, level: "Gym")
-Level.create(id: 4, level: "Coding")
-Level.create(id: 5, level: "Music")
-Level.create(id: 6, level: "Shopping")
+levels = Level.create([
+    {
+        id: 0,
+        level: "Not speciffied"
+    },
 
-# levels = Level.create([
-#     {
-#         id: 1,
-#         level: "Cattle grazing"
-#     },
+    {
+        id: 1,
+        level: "Cattle grazing"
+    },
 
-#     {
-#         id: 2,
-#         level: "Farm works"
-#     },
+    {
+        id: 2,
+        level: "Farm works"
+    },
 
-#     {
-#         id: 3,
-#         level: "Gym"
-#     },
+    {
+        id: 3,
+        level: "Gym"
+    },
 
-#     {
-#         id: 4,
-#         level: "Coding"
-#     },
+    {
+        id: 4,
+        level: "Coding"
+    },
 
-#     {
-#         id: 5,
-#         level: "Music "
-#     },
+    {
+        id: 5,
+        level: "Music "
+    },
 
-#     {
-#         id: 6,
-#         level: "Shopping"
-#     },
-# ])
+    {
+        id: 6,
+        level: "Shopping"
+    },
+])
 
 
 tasks = Task.create([

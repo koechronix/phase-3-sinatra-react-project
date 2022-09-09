@@ -14,10 +14,6 @@ class ApplicationController < Sinatra::Base
     tasks.to_json(include: { level: {only: [:level]} })
   end
 
-  # get '/tasks-medium' do
-  #   tasks = Task.filter_importance('medium')
-  #   tasks.to_json(include: { level: {only: [:level]} })
-  # end
 
   get '/tasks-high' do
     tasks = Task.filter_importance('high')
@@ -40,7 +36,7 @@ class ApplicationController < Sinatra::Base
     task.to_json(include: {level: {only: [:level]} })
     
   end
-  # # PATCH request
+  # PATCH request
 
   patch '/tasks/:id' do
     task = Task.find(params[:id])
