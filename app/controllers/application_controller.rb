@@ -2,7 +2,6 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-
   # GET requests
   get '/tasks' do
     tasks = Task.all_importance
@@ -13,7 +12,6 @@ class ApplicationController < Sinatra::Base
     tasks = Task.filter_importance('low')
     tasks.to_json(include: { level: {only: [:level]} })
   end
-
 
   get '/tasks-high' do
     tasks = Task.filter_importance('high')
@@ -26,7 +24,6 @@ class ApplicationController < Sinatra::Base
   end
 
   # POST request(create)
-
   post '/tasks' do
     task = Task.create(
       item:params[:item],
@@ -36,8 +33,8 @@ class ApplicationController < Sinatra::Base
     task.to_json(include: {level: {only: [:level]} })
     
   end
-  # PATCH request
 
+  # PATCH request
   patch '/tasks/:id' do
     task = Task.find(params[:id])
     task.update(
@@ -54,5 +51,4 @@ class ApplicationController < Sinatra::Base
     task.to_json
   end
  
-
 end
