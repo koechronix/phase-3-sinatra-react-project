@@ -73,5 +73,4 @@ tasks = Task.create([
 
 ])
 
-
 puts "✅ Done seeding!"
