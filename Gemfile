@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+ruby "2.7.4"
+
+ gem 'sinatra-contrib', '~> 2.2', '>= 2.2.2',require: false
+
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
 gem "sinatra", "~> 2.1"
@@ -49,4 +53,8 @@ group :test do
   gem "rack-test", "~> 1.1"
   gem "rspec", "~> 3.10"
   gem "rspec-json_expectations", "~> 2.2"
+end
+#  Hosting to heroku
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.3'
 end
